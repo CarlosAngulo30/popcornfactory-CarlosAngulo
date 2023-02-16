@@ -20,7 +20,7 @@ class MovieDetail : AppCompatActivity() {
         intent.getStringExtra("titulo")
         var tituloPelicula= intent.getStringExtra("titulo")
         var descripcionPelicula= intent.getStringExtra("sinopsis")
-        var imagenPelicula= intent.getIntExtra("image", 0)
+        var imagenPelicula= intent.getIntExtra("header", 0)
         titulo.setText(tituloPelicula)
         descripcion.setText(descripcionPelicula)
         imagen.setImageResource(imagenPelicula)
