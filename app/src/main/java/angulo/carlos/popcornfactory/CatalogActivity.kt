@@ -75,11 +75,12 @@ class CatalogActivity : AppCompatActivity() {
 
             image.setOnClickListener {
                 var intento = Intent(context, MovieDetail::class.java)
+                var seatsAvailable = 20 - pelicula.seats.size
                 intento.putExtra("titulo", pelicula.titulo)
                 intento.putExtra("sinopsis", pelicula.sinopsis)
                 intento.putExtra("header", pelicula.header)
                 intento.putExtra("image", pelicula.image)
-                intento.putExtra("numberSeats", (20-pelicula.seats.size))
+                intento.putExtra("numberSeats", seatsAvailable)
                 intento.putExtra("pos",p0)
                 context!!.startActivity(intento)
             }

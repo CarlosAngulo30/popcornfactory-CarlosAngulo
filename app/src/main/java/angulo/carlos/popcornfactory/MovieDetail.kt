@@ -18,20 +18,28 @@ class MovieDetail : AppCompatActivity() {
         var id=-1
         var title=""
         var seats: TextView = findViewById(R.id.seatsLeft) as TextView
-        var boton: Button= findViewById(R.id.buyTickets) as Button
+        var buyTickets: Button= findViewById(R.id.buyTickets) as Button
         if(bundle!=null){
+            var seats: TextView = findViewById(R.id.seatsLeft) as TextView
             ns=bundle.getInt("numberSeats")
             seats.setText("$ns seats Aviable")
             id=bundle.getInt("pos")
             title=bundle.getString("titulo")!!
+            var asientosRestantes = intent.getIntExtra("numberSeats", 0)!!
+            id = intent.getIntExtra("pos", -1)
+            seats.setText("$asientosRestantes seats available ")
         }
+
+
         if(ns==0){
-            boton.isActivated=false
+            buyTickets.isEnabled=false
         }else{
-            boton.setOnClickListener {
+            buyTickets.isEnabled=true
+            buyTickets.setOnClickListener {
                 val intent: Intent= Intent(this, SeatSelection::class.java)
                 intent.putExtra("id",id)
                 intent.putExtra("name",title)
+                this.startActivity(intent)
             }
         }
     }
